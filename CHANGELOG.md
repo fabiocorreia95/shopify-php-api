@@ -7,6 +7,7 @@ and adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+- [#136](https://github.com/Shopify/shopify-php-api/pull/136) Allow full paths in REST requests
 - [#117](https://github.com/Shopify/shopify-php-api/pull/117) Handle float `Retry-After` headers
 - [#114](https://github.com/Shopify/shopify-php-api/pull/114) Update session cookie expiration after OAuth
 - [#116](https://github.com/Shopify/shopify-php-api/pull/116) Save signature OAuth cookies when using the fallback function for frameworkless apps
