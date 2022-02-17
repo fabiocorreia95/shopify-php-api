@@ -189,10 +189,8 @@ final class Registry
 
         if ($checkStatusCode !== 200) {
             throw new WebhookRegistrationException(
-                <<<ERROR
-                Failed to check if webhook was already registered (status code $checkStatusCode):
-                $checkBody
-                ERROR
+                "Failed to check if webhook was already registered (status code $checkStatusCode):
+$checkBody"
             );
         }
 
@@ -231,10 +229,8 @@ final class Registry
         $body = $registerResponse->getDecodedBody();
         if ($statusCode !== 200) {
             throw new WebhookRegistrationException(
-                <<<ERROR
-                Failed to register webhook with Shopify (status code $statusCode):
-                $body
-                ERROR
+                "Failed to register webhook with Shopify (status code $statusCode):
+$body"
             );
         }
 
@@ -256,7 +252,7 @@ final class Registry
 
         $missingHeaders = $headers->diff(
             [HttpHeaders::X_SHOPIFY_HMAC, HttpHeaders::X_SHOPIFY_TOPIC, HttpHeaders::X_SHOPIFY_DOMAIN],
-            false,
+            false
         );
 
         if (!empty($missingHeaders)) {

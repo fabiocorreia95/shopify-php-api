@@ -152,7 +152,7 @@ class OAuth
                 $sessionDeleted = Context::$SESSION_STORAGE->deleteSession($session->getId());
                 if (!$sessionDeleted) {
                     throw new SessionStorageException(
-                        'OAuth Session could not be deleted. Please check your session storage functionality.',
+                        'OAuth Session could not be deleted. Please check your session storage functionality.'
                     );
                 }
                 $session = $jwtSession;
@@ -162,7 +162,7 @@ class OAuth
         $sessionStored = Context::$SESSION_STORAGE->storeSession($session);
         if (!$sessionStored) {
             throw new SessionStorageException(
-                'OAuth Session could not be saved. Please check your session storage functionality.',
+                'OAuth Session could not be saved. Please check your session storage functionality.'
             );
         }
 
@@ -308,7 +308,7 @@ class OAuth
                 "",
                 "",
                 $signatureCookie->isSecure(),
-                $signatureCookie->isHttpOnly(),
+                $signatureCookie->isHttpOnly()
             );
 
             $cookieSet = $cookieSet && setcookie(
@@ -318,7 +318,7 @@ class OAuth
                 "",
                 "",
                 $cookie->isSecure(),
-                $cookie->isHttpOnly(),
+                $cookie->isHttpOnly()
             );
             // @codeCoverageIgnoreEnd
         }
@@ -396,7 +396,7 @@ class OAuth
             $body['associated_user']['email_verified'],
             $body['associated_user']['account_owner'],
             $body['associated_user']['locale'],
-            $body['associated_user']['collaborator'],
+            $body['associated_user']['collaborator']
         );
 
         return new AccessTokenOnlineResponse(
@@ -404,7 +404,7 @@ class OAuth
             $body['scope'],
             $body['expires_in'],
             $body['associated_user_scope'],
-            $associatedUser,
+            $associatedUser
         );
     }
 

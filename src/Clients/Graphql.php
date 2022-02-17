@@ -71,7 +71,7 @@ class Graphql
             $extraHeaders,
             $query,
             $tries,
-            $dataType,
+            $dataType
         );
     }
 
@@ -105,7 +105,7 @@ class Graphql
             $extraHeaders,
             [],
             $tries,
-            Http::DATA_TYPE_JSON,
+            Http::DATA_TYPE_JSON
         );
     }
 

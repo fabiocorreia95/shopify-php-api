@@ -52,24 +52,22 @@ class PubSub extends DeliveryMethod
      */
     public function buildCheckQuery(string $topic): string
     {
-        return <<<QUERY
-            {
-                webhookSubscriptions(first: 1, topics: $topic) {
-                    edges {
-                        node {
-                            id
-                            endpoint {
-                                __typename
-                                ... on WebhookPubSubEndpoint {
-                                    pubSubProject
-                                    pubSubTopic
-                                }
-                            }
-                        }
+        return "{
+    webhookSubscriptions(first: 1, topics: $topic) {
+        edges {
+            node {
+                id
+                endpoint {
+                    __typename
+                    ... on WebhookPubSubEndpoint {
+                        pubSubProject
+                        pubSubTopic
                     }
                 }
             }
-            QUERY;
+        }
+    }
+}";
     }
 
     /**

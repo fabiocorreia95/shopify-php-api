@@ -65,9 +65,8 @@ abstract class DeliveryMethod
         $identifier = $webhookId ? "id: \"$webhookId\"" : "topic: $topic";
         $webhookSubscriptionArgs = $this->queryEndpoint($callbackAddress);
 
-        return <<<QUERY
-        mutation webhookSubscription {
-            $mutationName($identifier, webhookSubscription: $webhookSubscriptionArgs) {
+        return sprintf("        mutation webhookSubscription {
+            %s(%s, webhookSubscription: %s) {
                 userErrors {
                     field
                     message
@@ -76,8 +75,7 @@ abstract class DeliveryMethod
                     id
                 }
             }
-        }
-        QUERY;
+        }", $mutationName, $identifier, $webhookSubscriptionArgs);
     }
 
     /**

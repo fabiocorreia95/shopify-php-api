@@ -119,7 +119,7 @@ class Http
             null,
             $headers,
             $query,
-            $tries,
+            $tries
         );
     }
 
@@ -246,14 +246,12 @@ class Http
         // above are hit, so is this.
         // @codeCoverageIgnoreStart
         Context::log(
-            <<<NOTICE
-            API Deprecation notice:
-                URL: $url
-                Reason: $reason
-            Stack trace:
-                $stackTrace
-            NOTICE,
-            LogLevel::WARNING,
+            "API Deprecation notice:
+    URL: $url
+    Reason: $reason
+Stack trace:
+    $stackTrace",
+            LogLevel::WARNING
         );
         // @codeCoverageIgnoreEnd
     }

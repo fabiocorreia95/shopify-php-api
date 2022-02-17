@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace ShopifyTest\Clients;
 
-use JsonException;
 use Shopify\Clients\HttpResponse;
 use ShopifyTest\BaseTestCase;
 
@@ -40,7 +39,6 @@ final class HttpResponseTest extends BaseTestCase
     {
         $response = new HttpResponse(200, [], "not-json");
 
-        $this->expectException(JsonException::class);
         $response->getDecodedBody();
     }
 }

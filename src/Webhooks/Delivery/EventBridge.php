@@ -51,23 +51,21 @@ class EventBridge extends DeliveryMethod
      */
     public function buildCheckQuery(string $topic): string
     {
-        return <<<QUERY
-            {
-                webhookSubscriptions(first: 1, topics: $topic) {
-                    edges {
-                        node {
-                            id
-                            endpoint {
-                                __typename
-                                ... on WebhookEventBridgeEndpoint {
-                                    arn
-                                }
-                            }
-                        }
+        return "{
+    webhookSubscriptions(first: 1, topics: $topic) {
+        edges {
+            node {
+                id
+                endpoint {
+                    __typename
+                    ... on WebhookEventBridgeEndpoint {
+                        arn
                     }
                 }
             }
-            QUERY;
+        }
+    }
+}";
     }
 
     /**

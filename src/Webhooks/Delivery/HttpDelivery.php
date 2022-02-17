@@ -27,36 +27,32 @@ class HttpDelivery extends DeliveryMethod
     public function buildCheckQuery(string $topic): string
     {
         if (Utils::isApiVersionCompatible('2020-07')) {
-            return <<<QUERY
-            {
-                webhookSubscriptions(first: 1, topics: $topic) {
-                    edges {
-                        node {
-                            id
-                            endpoint {
-                                __typename
-                                ... on WebhookHttpEndpoint {
-                                    callbackUrl
-                                }
-                            }
-                        }
+            return "{
+    webhookSubscriptions(first: 1, topics: $topic) {
+        edges {
+            node {
+                id
+                endpoint {
+                    __typename
+                    ... on WebhookHttpEndpoint {
+                        callbackUrl
                     }
                 }
             }
-            QUERY;
+        }
+    }
+}";
         } else {
-            return <<<LEGACY_QUERY
-            {
-                webhookSubscriptions(first: 1, topics: $topic) {
-                    edges {
-                        node {
-                            id
-                            callbackUrl
-                        }
-                    }
-                }
+            return "{
+    webhookSubscriptions(first: 1, topics: $topic) {
+        edges {
+            node {
+                id
+                callbackUrl
             }
-            LEGACY_QUERY;
+        }
+    }
+}";
         }
     }
 
